@@ -10,12 +10,17 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://meet.google.com/*"],
+      "matches": [
+        "https://meet.google.com/*",
+        "https://apollo.vtstaging.com/sessions/*"
+      ],
       "js": ["faceapi.min.js", "contentScript.js"]
     }
   ],
-  "web_accessible_resources": [{
-    "matches": ["<all_urls>"],
-    "resources": ["/models/*"]
-  }]
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["/models/*"]
+    }
+  ]
 }
