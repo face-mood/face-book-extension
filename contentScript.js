@@ -1,4 +1,4 @@
-const platform = window.history.state.url.includes("meet") ? "meet" : "llp";
+const platform = window.location.href.includes("meet") ? "meet" : "llp";
 
 const defaultValue = {
   neutral: 0,
