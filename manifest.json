@@ -6,10 +6,12 @@
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "index.html",
-    "default_icon": "dijk_smiling.jpeg"
+    "default_icon": "dijk_smiling.png"
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["faceapi.min.js", "contentScript.js"]
-  }]
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["faceapi.min.js", "contentScript.js"]
+    }
+  ]
 }
