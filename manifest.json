@@ -10,8 +10,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://meet.google.com/*"],
       "js": ["faceapi.min.js", "contentScript.js"]
     }
-  ]
+  ],
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["/models/*"]
+  }]
 }
