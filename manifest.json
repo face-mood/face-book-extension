@@ -6,7 +6,7 @@
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "index.html",
-    "default_icon": "dijk_smiling.png"
+    "default_icon": "smile.png"
   },
   "content_scripts": [
     {
