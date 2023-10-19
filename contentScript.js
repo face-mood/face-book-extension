@@ -1,6 +1,4 @@
-console.log("oie")
-console.log(faceapi);
-console.log("oi2");
+const platform = 'meet';
 
 const defaultValue = {
   neutral: 0,
@@ -13,6 +11,21 @@ const defaultValue = {
 };
 
 let currentEmotionElement = null;
+
+const getVideoInGoogleMeet = () => {
+  const videos = document.querySelectorAll('video');
+  
+  const video = [...videos].find((video) => video.classList.length === 1);
+
+  return video;
+};
+
+const getVideoInLLP = () => document.querySelector('.OT_subscriber video');
+
+const getVideoPlatforms = {
+  meet: getVideoInGoogleMeet,
+  llp: getVideoInLLP,
+};
 
 const showEmotion = (video, expressions = defaultValue) => {
   const { parentNode: videoParent } = video;
@@ -37,6 +50,7 @@ const showEmotion = (video, expressions = defaultValue) => {
     return acc;
   }, { key: '', value: 0 });
 
+
   emotionText.innerText = emotion.key;
 
   if (currentEmotionElement) {
@@ -46,7 +60,11 @@ const showEmotion = (video, expressions = defaultValue) => {
 
   currentEmotionElement = emotionText;
 
-  videoParent.appendChild(emotionText);
+
+  if (emotion.value > 0) {
+    videoParent.appendChild(emotionText);
+  }
+
 };
 
 const startScript = (video) => {
@@ -64,10 +82,7 @@ const startScript = (video) => {
 
 const getVideo = () => {
   const interval = setInterval(() => {
-    console.log('interval');
-    const videos = document.querySelectorAll('video');
-  
-    const video = [...videos].find((video) => video.classList.length === 1);
+    const video = getVideoPlatforms[platform]();
   
     if (video) {
       clearInterval(interval);
